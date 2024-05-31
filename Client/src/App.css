@@ -60,10 +60,59 @@ button {
   padding: 10px 20px;
   font-size: 16px;
 }
+.lists{
+  display: flex;
+  gap:0.9rem;
+}
+@media (max-width:653px) {
+  .buttons{
+    margin-left: 20px !important;
+  }
+}
+@media (max-width:553px) {
+  .buttons button{
+    font-size: 13px;
+  }
+  .buttons{
+    width:400px !important;
+  }
+}
+@media (max-width:467px) {
+  body , .buttons button , .lists{
+    font-size: 0.6rem !important;
+  }
+  .buttons{
+    justify-content: space-evenly;
+    margin-left: -2px !important;
+  }
+  .scoreboard-container{
+    margin-left: -20px !important;
+  }
+}
+@media (max-width:832px) {
+  .BigBoard, .buttons{
+    left:-50px !important;
+    width:500px;
+  }
+  .buttons{
+    margin-left:0px;
+  }
+}
+@media (max-width:1053px) {
+  .BigBoard{
+    position: relative !important;
+    top:90px;
+  }
+}
+.BigBoard{
+  position: absolute;
+  top: 10px;
+  left:100px;
+}
 .board {
   display: grid;
   gap: 5px;
-  margin: 20px auto;
+  margin-left: 40px;
   max-width: 80vw;
 }
 

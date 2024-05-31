@@ -10,7 +10,6 @@ function GameBoard({ gridSize, winStreak, resetGame }) {
   const [winner, setWinner] = useState(null);
   const dispatch=useDispatch();
   let scoreX=useSelector((state)=>state.CscoreX);
-  let users=useSelector((state)=>state.game_data);
   let gameno=useSelector((state)=>state.Cgameno);
   let scoreY=useSelector((state)=>state.CscoreY);
   const handleClick = (index) => {
@@ -95,30 +94,28 @@ function GameBoard({ gridSize, winStreak, resetGame }) {
   const newGame=()=>{
     const user={scoreX:scoreX , scoreY:scoreY , gameno:gameno};
     dispatch(setnewGame({game_data:user}));
-    console.log(users);
   }
 
   return (
-    <div>
+    <div className='BigBoard'>
+      <h1 style={{marginRight:'90px'}}>Tic-Tac-Toe</h1>
       <div className="board" style={{ gridTemplateColumns: `repeat(${gridSize}, 1fr)` }}>
         {board.map((_, index) => renderCell(index))}
       </div>
       {winner && <div className="result">Player {winner} wins!</div>}
       {draw && <div className="result">Match Draw !</div>}
+      <div className="buttons">
       <button onClick={resetGame}>Restart Game</button>
       <button onClick={restartGame}>Reset Game</button>
       <button onClick={newGame}>New-Set-of-Game</button>
-      <h5>{scoreX}</h5>
-      <h5>{scoreY}</h5>
-      <h5>{gameno}</h5>
-      <ul>
-    <Scoreboard users={users}/>
-</ul>
-
-
-
-
-
+      </div>
+      <ul className="" style={{marginRight:"90px", width:'600px', fontSize:'0.7rem',}}>
+            <li  className="lists">
+              <span>Total-Current-Games : {gameno}</span>
+              <span>Current-X-Score : {scoreX}</span>
+              <span>Current-O-Score : {scoreY}</span>
+            </li>
+      </ul>
     </div>
   );
 }
